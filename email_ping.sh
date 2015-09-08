@@ -13,6 +13,7 @@ email_ping ()     {
     local subject=$2
     local email=$3
     local httpcode=$(curl -o /dev/null --silent --head --write-out '%{http_code}' $url)
+    echo "$(date +%Y-%m-%d.%H:%M:%S) $url [$httpcode]"
     curl $url -s -f -o /dev/null || echo "$subject ($url) [httpcode=$httpcode]" | mail -s "$subject ($url) [httpcode=$httpcode]" "$email"
 } # email_ping
 

@@ -13,7 +13,7 @@ LOGFILE="$APP_NAME.log"
 case "$1" in
     start)
         echo "Starting $APP_NAME ..."
-        PID=$($APP_DIR/email_ping.sh > $LOGFILE 2>&1 & echo $!)
+        PID=$(sh $APP_DIR/email_ping.sh > $LOGFILE 2>&1 & echo $!)
         if [ -z $PID ]; then
                 echo "Enable to start $APP_NAME. No PID was created"
         else
