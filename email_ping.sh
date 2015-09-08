@@ -18,8 +18,7 @@ email_ping ()     {
 } # email_ping
 
 while true; do
-    HOUR=`date +%H`
-    while [ $HOUR -ne "00" ]; do 
+        HOUR=`date +%H`
 
         # ServiceManager (/local/eldrad/users/lapps/tomcat7/8080)
         email_ping http://eldrad.cs-i.brandeis.edu:8080/ "Lapps ServiceManager" "shicq@cs.brandeis.edu, marc@cs.brandeis.edu"
@@ -35,9 +34,7 @@ while true; do
         # Galaxy (/local/eldrad/users/lapps/tomcat7/8000)
         email_ping http://eldrad.cs-i.brandeis.edu:8000/ "Galaxy" "shicq@cs.brandeis.edu, marc@cs.brandeis.edu"
 
-        sleep 3600
-        HOUR=`date +%H`
-        done
+        sleep $(( 3600 * 6 ))
 done
 
 # TEST1: curl www.websiteToTest.com -s -f -o /dev/null || echo "Website Down." | mail -s "Website is down" shicq@cs.brandeis.edu 
